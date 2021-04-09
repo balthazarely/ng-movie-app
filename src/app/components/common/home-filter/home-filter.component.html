@@ -1,0 +1,61 @@
+<div class="dropdown">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton1"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    (click)="openDropdown()"
+  >
+    {{ searchCategoryDisplay }}
+  </button>
+  <ul
+    class="dropdown-menu"
+    [ngClass]="{ show: dropdownOpen }"
+    aria-labelledby="dropdownMenuButton1"
+    (click)="onSelect($event)"
+  >
+    <li>
+      <a class="dropdown-item" href="#" name="now_playing">In Theatres</a>
+    </li>
+    <li><a class="dropdown-item" href="#" name="popular">Popular</a></li>
+    <li><a class="dropdown-item" href="#" name="top_rated">Top Rated</a></li>
+  </ul>
+</div>
+
+<div class="input-group mx-3">
+  <input
+    class="form-check-input mt-0"
+    type="checkbox"
+    (change)="addGenreToArray($event)"
+    name="28"
+  />
+  <p>Action</p>
+</div>
+<div class="input-group mx-3">
+  <input
+    class="form-check-input mt-0"
+    type="checkbox"
+    (change)="addGenreToArray($event)"
+    name="18"
+  />
+  <p>Drama</p>
+</div>
+<div class="input-group mx-3">
+  <input
+    class="form-check-input mt-0"
+    type="checkbox"
+    (change)="addGenreToArray($event)"
+    name="27"
+  />
+  <p>Horror</p>
+</div>
+<div class="input-group mx-3">
+  <input
+    class="form-check-input mt-0"
+    type="checkbox"
+    (change)="addGenreToArray($event)"
+    name="35"
+  />
+  <p>Comedy</p>
+</div>

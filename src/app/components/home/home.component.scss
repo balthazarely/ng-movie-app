@@ -1,0 +1,20 @@
+.movie-poster-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.movie-poster-image {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+.filter-wrapper {
+  // position: -webkit-sticky;
+  // position: sticky;
+  // top: 100px;
+  // background-color: yellow;
+  // padding: 50px;
+  // font-size: 20px;
+}

@@ -1,0 +1,20 @@
+<div class="card m-1" style="width: 100%">
+  <img
+    src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body" style="height: 120px">
+    <a routerLink="/movie/{{ movie.id }}">
+      <h6 class="card-title">
+        <strong>
+          {{ movie.title }}
+        </strong>
+      </h6>
+    </a>
+    <!-- <p class="card-text"></p> -->
+    <a routerLink="/similar/{{ movie.id }}">
+      <button class="btn btn-primary">Similar</button>
+    </a>
+  </div>
+</div>

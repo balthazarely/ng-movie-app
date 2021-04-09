@@ -1,0 +1,20 @@
+<section *ngIf="movie">
+  <div class="row">
+    <div class="col-3 border border-primary mt-4">
+      <div class="selected-movie">
+        <h1>{{ movie.title }}</h1>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="row no-gutters" [@listAnimation]="similarMovies.length">
+        <div
+          class="col-12 col-sm-6 col-md-4 col-lg-3 movie-poster-wrapper d-flex justify-content-center align-items-center"
+          *ngFor="let movie of similarMovies"
+          id="list"
+        >
+          <app-movie-card [movie]="movie"> </app-movie-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
