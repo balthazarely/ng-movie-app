@@ -8,7 +8,7 @@ import { MovieComponent } from './components/movie/movie.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { animation: 'HomePage' } },
   {
-    path: 'similar/:movieId',
+    path: 'similar/:movieId/:test',
     component: FindSimilarComponent,
     data: { animation: 'GenresComponent' },
   },

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home-filter',
@@ -14,16 +14,45 @@ export class HomeFilterComponent {
 
   @Output() sendCategoryData: EventEmitter<any> = new EventEmitter();
   @Output() sendGenreData: EventEmitter<any> = new EventEmitter();
+  @Output() sendFilterData: EventEmitter<any> = new EventEmitter();
 
   openDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
+  // Test stuff
+  @Input() amount;
+  @Output() amountChange = new EventEmitter();
+
+  selectActionGenre(event) {
+    console.log(event.target.checked);
+  }
+
+  withdraw(event) {
+    if (event.target.checked) {
+      this.amount.push(event.target.name);
+    }
+    if (!event.target.checked) {
+      this.amount.splice(this.amount.indexOf(event.target.checked));
+    }
+
+    // if (event.target.checked) {
+    //   this.amount = event.target.name;
+    // } else {
+    //   this.amount = '';
+    // }
+    this.amountChange.emit(this.amount);
+  }
+  // Test stuff
 
   onSelect(event) {
     this.searchCategory = event.target.name;
     this.searchCategoryDisplay = event.target.innerText;
-    this.sendCategoryData.emit(this.searchCategory);
     this.dropdownOpen = false;
+  }
+  submitSearch() {
+    this.sendFilterData.emit([this.searchCategory, this.genreArray.join()]);
+    // this.sendCategoryData.emit(this.searchCategory);
+    // this.sendGenreData.emit(this.genreArray.join());
   }
 
   addGenreToArray(event) {
@@ -34,8 +63,6 @@ export class HomeFilterComponent {
       this.genreArray.splice(this.genreArray.indexOf(event.target.checked));
     }
     console.log(this.genreArray);
-
-    this.sendGenreData.emit(this.genreArray.join());
   }
   // includeDrama: boolean = false;
   // filterString: string = '';

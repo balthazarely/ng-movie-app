@@ -24,6 +24,7 @@ export class FindSimilarComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((routerParams) => {
+      console.log(routerParams);
       this.getSelectedMovieDetails(routerParams.movieId);
       this.getSimilarMovies(routerParams.movieId, this.pageNumber);
     });

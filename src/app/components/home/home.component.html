@@ -1,19 +1,21 @@
+<div *ngFor="let num of amount">
+  {{ num }}
+</div>
+<button (click)="test()">Test</button>
+
 <section>
   <div class="container">
     <div
       class="search-results"
       infiniteScroll
-      [infiniteScrollDistance]="0"
+      [infiniteScrollDistance]="2"
       [infiniteScrollThrottle]="50"
       (scrolled)="onScroll()"
     >
       <div class="row">
         <div class="col-3 border border-primary mt-4">
           <div class="filter-wrapper">
-            <app-home-filter
-              (sendCategoryData)="sendSearchDataToParent($event)"
-              (sendGenreData)="sendGenrehDataToParent($event)"
-            ></app-home-filter>
+            <app-home-filter [(amount)]="amount"></app-home-filter>
           </div>
         </div>
         <div class="col-9">
@@ -30,9 +32,9 @@
       </div>
     </div>
   </div>
-  <div class="container d-flex justify-content-center align-items-center">
+  <h2>no movies mate</h2>
+  <!-- <div class="container d-flex justify-content-center align-items-center">
     <div *ngIf="movies.length === 0">
-      <h2>no movies mate</h2>
     </div>
     <div
       *ngIf="!loadingResults"
@@ -41,5 +43,5 @@
     >
       <span class="visually-hidden"></span>
     </div>
-  </div>
+  </div> -->
 </section>

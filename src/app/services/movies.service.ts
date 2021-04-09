@@ -12,6 +12,10 @@ export class MoviesService {
   constructor(private http: HttpClient) {}
 
   getMovies(page, searchType, genresIncluded) {
+    console.log(
+      `${this.apiUrl}3/movie/${searchType}${this.apiKey}&language=en-US&page=${page}&with_genres=${genresIncluded}`
+    );
+
     return this.http.get(
       `${this.apiUrl}3/movie/${searchType}${this.apiKey}&language=en-US&page=${page}&with_genres=${genresIncluded}`
     );

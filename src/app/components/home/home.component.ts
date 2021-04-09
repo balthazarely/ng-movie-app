@@ -15,6 +15,11 @@ export class HomeComponent implements OnInit {
   searchType: string = 'now_playing';
   includeGenres: string = '';
 
+  // Test Stuff
+  amount: any = [];
+
+  /// Test stuff
+
   constructor(private movieService: MoviesService) {}
 
   ngOnInit() {
@@ -43,37 +48,25 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll() {
-    setTimeout(() => {
-      if (!this.loadingResults) {
-        this.loadingResults = true;
-        this.pageNumber++;
-        this.loadMoreMovies(
-          this.pageNumber,
-          this.searchType,
-          this.includeGenres
-        );
-      }
-    }, 700);
+    // setTimeout(() => {
+    if (!this.loadingResults) {
+      this.loadingResults = true;
+      this.pageNumber++;
+      this.loadMoreMovies(this.pageNumber, this.searchType, this.includeGenres);
+    }
+    // }, 700);
   }
 
-  sendSearchDataToParent(str) {
-    this.searchType = str;
-    this.fetchMovieResults(
-      this.pageNumber,
-      this.searchType,
-      this.includeGenres
-    );
+  test() {
+    this.pageNumber = 1;
+    this.fetchMovieResults(this.pageNumber, 'now_playing', this.amount.join());
   }
-  sendGenrehDataToParent(str) {
-    console.log(str);
-    this.includeGenres = str;
-    this.fetchMovieResults(
-      this.pageNumber,
-      this.searchType,
-      this.includeGenres
-    );
-
-    // this.searchType = str;
-    // this.fetchMovieResults(this.pageNumber, this.searchType);
-  }
+  // sendGenrehDataToParent(str) {
+  //   console.log(str);
+  //   this.includeGenres = str;
+  //   this.fetchMovieResults(
+  //     this.pageNumber,
+  //     this.searchType,
+  //     this.includeGenres
+  //   );
 }

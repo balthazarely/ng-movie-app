@@ -23,7 +23,30 @@
   </ul>
 </div>
 
-<div class="input-group mx-3">
+<div class="input-group m-3">
+  <input
+    class="form-check-input mt-0"
+    type="checkbox"
+    (change)="withdraw($event)"
+    name="35"
+  />
+  <p>Comedy</p>
+</div>
+
+<div class="input-group m-3">
+  <input
+    class="form-check-input mt-0"
+    type="checkbox"
+    (change)="withdraw($event)"
+    name="27"
+  />
+  <p>Horror</p>
+</div>
+
+{{ amount }}
+
+<!-- <button (click)="submitSearch()">Submit</button> -->
+<!-- <div class="input-group m-3">
   <input
     class="form-check-input mt-0"
     type="checkbox"
@@ -31,31 +54,4 @@
     name="28"
   />
   <p>Action</p>
-</div>
-<div class="input-group mx-3">
-  <input
-    class="form-check-input mt-0"
-    type="checkbox"
-    (change)="addGenreToArray($event)"
-    name="18"
-  />
-  <p>Drama</p>
-</div>
-<div class="input-group mx-3">
-  <input
-    class="form-check-input mt-0"
-    type="checkbox"
-    (change)="addGenreToArray($event)"
-    name="27"
-  />
-  <p>Horror</p>
-</div>
-<div class="input-group mx-3">
-  <input
-    class="form-check-input mt-0"
-    type="checkbox"
-    (change)="addGenreToArray($event)"
-    name="35"
-  />
-  <p>Comedy</p>
-</div>
+</div> -->
