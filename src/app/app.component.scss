@@ -1,2 +1,13 @@
 .main-content-wrapper {
+  .search-wrapper {
+    z-index: 100;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+  }
+
+  .outlet-wrapper {
+    z-index: 99;
+    margin-top: 60px;
+  }
 }

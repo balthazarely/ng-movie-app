@@ -1,0 +1,35 @@
+<div *ngIf="movies">
+  <div class="card" *ngFor="let movie of movies">
+    <div class="row">
+      <div class="col-3">
+        <img
+          src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+      <div class="col-9">
+        <a
+          *ngIf="movie.media_type === 'movie'"
+          routerLink="/movie/{{ movie.id }}"
+        >
+          <p class="card-text">{{ movie.title }}</p>
+        </a>
+        <a *ngIf="movie.media_type === 'tv'" routerLink="/tv/{{ movie.id }}">
+          <p class="card-text">{{ movie.name }}</p>
+        </a>
+
+        <a
+          *ngIf="movie.media_type === 'person'"
+          routerLink="/actor/{{ movie.id }}"
+        >
+          <p class="card-text">{{ movie.name }}</p>
+        </a>
+
+        <p class="card-text">{{ movie.media_type }}</p>
+        <p class="card-text">{{ movie.release_date }}</p>
+        <p class="card-text">{{ movie.overview }}</p>
+      </div>
+    </div>
+  </div>
+</div>

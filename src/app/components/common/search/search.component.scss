@@ -1,0 +1,21 @@
+.search-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.results-dropdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba($color: #ffffff, $alpha: 1);
+}
+
+.rec-title {
+  &:hover {
+    background: cornsilk;
+    cursor: pointer;
+  }
+}

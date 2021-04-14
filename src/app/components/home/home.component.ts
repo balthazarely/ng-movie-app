@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
 import { loadStagger } from '../../animations';
 
@@ -8,35 +9,49 @@ import { loadStagger } from '../../animations';
   styleUrls: ['./home.component.scss'],
   animations: [loadStagger.loadStaggerTrigger],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   movies = [];
   loadingResults = false;
   pageNumber: number = 1;
   searchType: string = 'now_playing';
   includeGenres: string = '';
 
-  // Test Stuff
-  amount: any = [];
-
-  /// Test stuff
+  //
+  private subscription: Subscription;
 
   constructor(private movieService: MoviesService) {}
 
   ngOnInit() {
-    this.fetchMovieResults(
-      this.pageNumber,
-      this.searchType,
-      this.includeGenres
-    );
+    this.subscription = this.movieService
+      .getMovies(this.pageNumber, this.searchType, this.includeGenres)
+      .subscribe(
+        (data: any) => {
+          this.movies = data.results;
+        },
+        (err) => console.log('Recived error:', err),
+        () => console.log('Complete!')
+      );
+    // this.fetchMovieResults(
+    //   this.pageNumber,
+    //   this.searchType,
+    //   this.includeGenres
+    // );
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    console.log('SUB IS DEAD');
   }
 
   fetchMovieResults(page, searchType, genresIncluded) {
-    this.movieService
-      .getMovies(page, searchType, genresIncluded)
-      .subscribe((data: any) => {
-        this.movies = data.results;
-        console.log(this.movies);
-      });
+    this.movieService.getMovies(page, searchType, genresIncluded).subscribe(
+      (data) => console.log('Recived data:', data),
+      (err) => console.log('Recived error:', err),
+      () => console.log('Complete!')
+    );
+    // .subscribe((data: any) => {
+    //   this.movies = data.results;
+    //   console.log(this.movies);
+    // });
   }
   loadMoreMovies(page, searchType, genresIncluded) {
     this.movieService
@@ -48,25 +63,10 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll() {
-    // setTimeout(() => {
     if (!this.loadingResults) {
       this.loadingResults = true;
       this.pageNumber++;
       this.loadMoreMovies(this.pageNumber, this.searchType, this.includeGenres);
     }
-    // }, 700);
   }
-
-  test() {
-    this.pageNumber = 1;
-    this.fetchMovieResults(this.pageNumber, 'now_playing', this.amount.join());
-  }
-  // sendGenrehDataToParent(str) {
-  //   console.log(str);
-  //   this.includeGenres = str;
-  //   this.fetchMovieResults(
-  //     this.pageNumber,
-  //     this.searchType,
-  //     this.includeGenres
-  //   );
 }

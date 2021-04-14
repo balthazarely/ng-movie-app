@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -16,6 +17,16 @@ import { MovieCardComponent } from './components/common/movie-card/movie-card.co
 import { HomeFilterComponent } from './components/common/home-filter/home-filter.component';
 import { FormsModule } from '@angular/forms';
 import { FindSimilarComponent } from './components/find-similar/find-similar.component';
+import { SearchComponent } from './components/common/search/search.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { SearchResultCardComponent } from './components/common/search-result-card/search-result-card.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { TvComponent } from './components/tv/tv.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { AuthService } from './components/auth/auth.service';
+import { SavedMoviesComponent } from './components/saved-movies/saved-movies.component';
+import { ActorComponent } from './components/actor/actor.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +39,15 @@ import { FindSimilarComponent } from './components/find-similar/find-similar.com
     MovieCardComponent,
     HomeFilterComponent,
     FindSimilarComponent,
+    SearchComponent,
+    SearchResultsComponent,
+    SearchResultCardComponent,
+    SidenavComponent,
+    TvComponent,
+    LoginComponent,
+    SignupComponent,
+    SavedMoviesComponent,
+    ActorComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,8 +58,9 @@ import { FindSimilarComponent } from './components/find-similar/find-similar.com
     NgbModule,
     FormsModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

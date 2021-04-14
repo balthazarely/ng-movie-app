@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,9 +7,14 @@ import { RouterOutlet } from '@angular/router';
   // animations: [slideInAnimation],
 })
 export class AppComponent {
-  // prepareRoute(outlet: RouterOutlet) {
-  //   return (
-  //     outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
-  //   );
+  data: string;
+
+  constructor() {} // private activatedRoute: ActivatedRoute
+
+  // ngOnInit() {
+  //   // this.activatedRoute.params.subscribe((routeParams) => {
+  //   //   console.log(routeParams);
+  //   // });
+  //   this.service.data$.subscribe((res) => (this.data = res)); //read the invoked data or default data
   // }
 }

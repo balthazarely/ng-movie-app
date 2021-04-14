@@ -1,0 +1,33 @@
+<form class="form-signin" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <h1 class="h3 mb-3 font-weight-normal">Sign in to MovieApp</h1>
+  <input
+    type="email"
+    id="inputEmail"
+    class="form-control border"
+    placeholder="Email address"
+    ngModel
+    name="email"
+    email
+    required
+    #emailInput="ngModel"
+    autofocus
+  />
+  <p>email</p>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input
+    type="password"
+    id="inputPassword"
+    class="form-control border"
+    placeholder="Password"
+    required
+    ngModel
+    name="password"
+    minlength="6"
+    #pwInput="ngModel"
+  />
+  <p>password</p>
+
+  <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">
+    Sign in
+  </button>
+</form>

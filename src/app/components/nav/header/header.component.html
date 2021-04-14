@@ -25,8 +25,17 @@
               >Home</a
             >
           </li>
+          <li>
+            <a
+              *ngIf="isAuth"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/my-movies"
+              >My Movies</a
+            >
+          </li>
 
-          <div ngbDropdown class="d-inline-block">
+          <!-- <div ngbDropdown class="d-inline-block">
             <button
               class="btn btn-outline-primary"
               id="dropdownBasic1"
@@ -45,9 +54,14 @@
                 Horror
               </button>
             </div>
-          </div>
+          </div> -->
         </ul>
       </div>
+    </div>
+    <div class="d-flex justify-content-between" style="width: 100px">
+      <a *ngIf="!isAuth" routerLink="/signup" style="color: white">SignUp</a>
+      <a *ngIf="!isAuth" routerLink="/login" style="color: white">Login</a>
+      <a *ngIf="isAuth" (click)="onLogout()" style="color: white">Logout</a>
     </div>
   </nav>
 </header>

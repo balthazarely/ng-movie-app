@@ -1,0 +1,30 @@
+<div class="container position-relative">
+  <div class="input-group flex-nowrap search-wrapper mt-2 border">
+    <input
+      [(ngModel)]="searchInput"
+      (input)="updateSearchString()"
+      (keyup.enter)="routeSearch()"
+      type="text"
+      class="form-control"
+      placeholder="Username"
+      aria-label="Username"
+      aria-describedby="addon-wrapping"
+    />
+  </div>
+  <div class="results-dropdown">
+    <div *ngFor="let rec of recomendations" class="rec-title border p-2">
+      <div (click)="idSearch(rec.id, rec.media_type, rec.title)">
+        <span>
+          <fa-icon *ngIf="rec.media_type === 'movie'" [icon]="faFilm"></fa-icon>
+          <fa-icon *ngIf="rec.media_type === 'tv'" [icon]="faTv"></fa-icon
+          ><fa-icon
+            *ngIf="rec.media_type === 'person'"
+            [icon]="faUser"
+          ></fa-icon
+        ></span>
+        {{ rec.title || rec.name }}
+        <span>{{ rec.media_type }}</span>
+      </div>
+    </div>
+  </div>
+</div>

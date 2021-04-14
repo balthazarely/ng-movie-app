@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss'],
+  selector: 'app-actor',
+  templateUrl: './actor.component.html',
+  styleUrls: ['./actor.component.scss'],
 })
-export class MovieComponent implements OnInit {
+export class ActorComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MoviesService
@@ -21,22 +21,14 @@ export class MovieComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.id = params.id;
       this.mediaType = params.mediaType;
-      this.loadMediaDetails(this.id);
+      this.loadActorDetails(this.id);
     });
   }
 
-  loadMediaDetails(id) {
-    // if (this.mediaType === 'movie') {
-    this.movieService.getMovie(id).subscribe((data: any) => {
+  loadActorDetails(id) {
+    this.movieService.getActor(id).subscribe((data: any) => {
       this.movieDetails = data;
       console.log(this.movieDetails);
     });
-    // }
-    // if (this.mediaType === 'tv') {
-    //   this.movieService.getShow(id).subscribe((data: any) => {
-    //     this.movieDetails = data;
-    //     console.log(this.movieDetails);
-    //   });
-    // }
   }
 }
